@@ -3,20 +3,21 @@ import MealItem from "../Components/MealItem";
 
 import { MEALS } from "../data/dummydata";
 
-function renderMealItem(itemData) {
-  const item = itemData.item;
+function MealsOverviewScreen({ navigation, route }) {
+  function renderMealItem(itemData) {
+    const item = itemData.item;
 
-  const mealItemProps = {
-    title: itemData.item.title,
-    imageURL: itemData.item.imageUrl,
-    affordability: itemData.item.affordability,
-    complexity: itemData.item.complexity,
-    duration: itemData.item.duration,
-  };
-  return <MealItem {...mealItemProps}></MealItem>;
-}
+    const mealItemProps = {
+      id: itemData.item.id,
+      title: itemData.item.title,
+      imageURL: itemData.item.imageUrl,
+      affordability: itemData.item.affordability,
+      complexity: itemData.item.complexity,
+      duration: itemData.item.duration,
+    };
+    return <MealItem data={mealItemProps}></MealItem>;
+  }
 
-function MealsOverviewScreen({ route }) {
   const categoryId = route.params.categoryId;
 
   const meals = MEALS.filter((mealItem) => {
