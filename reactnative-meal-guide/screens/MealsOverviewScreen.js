@@ -8,17 +8,20 @@ function MealsOverviewScreen({ navigation, route }) {
     const item = itemData.item;
 
     const mealItemProps = {
-      id: itemData.item.id,
-      title: itemData.item.title,
-      imageURL: itemData.item.imageUrl,
-      affordability: itemData.item.affordability,
-      complexity: itemData.item.complexity,
-      duration: itemData.item.duration,
+      id: item.id,
+      title: item.title,
+      imageURL: item.imageUrl,
+      affordability: item.affordability,
+      complexity: item.complexity,
+      duration: item.duration,
     };
     return <MealItem data={mealItemProps}></MealItem>;
   }
 
   const categoryId = route.params.categoryId;
+  const categoryName = route.params.categoryName;
+
+  navigation.setOptions({ headerTitle: categoryName });
 
   const meals = MEALS.filter((mealItem) => {
     return mealItem.categoryIds.indexOf(categoryId) >= 0;

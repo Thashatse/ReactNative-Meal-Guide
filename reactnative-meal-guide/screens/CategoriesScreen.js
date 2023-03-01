@@ -5,7 +5,10 @@ import { CATEGORIES } from "../data/dummydata";
 function CategoriesScreen({ navigation }) {
   function renderCategoryItem(itemData) {
     function pressHandler() {
-      navigation.navigate("CategoryOverview", { categoryId: itemData.item.id });
+      navigation.navigate("CategoryOverview", {
+        categoryId: itemData.item.id,
+        categoryName: itemData.item.title,
+      });
     }
 
     return (

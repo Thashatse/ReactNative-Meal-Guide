@@ -3,10 +3,24 @@ import { MEALS } from "../data/dummydata";
 import MealDetails from "../Components/MealDeatial";
 import SubTitle from "../Components/MealDetail/Subtitle";
 import List from "../Components/MealDetail/List";
+import { useLayoutEffect } from "react";
+import IconButton from "../Components/IconButton";
 
-function MealDetailScreen({ navigation, route }) {
+function MealDetailScreen({ route, navigation }) {
   const mealID = route.params.mealID;
   const meal = MEALS.find((meal) => meal.id === mealID);
+
+  function headerButtonPressHandler() {
+    console.log("Header Pressed, Meal ID: " + mealID);
+  }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <IconButton icon={"star"} colour={"black"} onPress={headerButtonPressHandler} />;
+      },
+    });
+  }, []);
 
   return (
     <ScrollView>
