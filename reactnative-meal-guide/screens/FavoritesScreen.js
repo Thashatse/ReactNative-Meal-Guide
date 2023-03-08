@@ -5,13 +5,17 @@ import MealsList from "../Components/MealsList/MealsList";
 //Data
 import { MEALS } from "../data/dummydata";
 //Contexts
-import { FavouritesContext } from "../store/context/favourites-context";
+// import { FavouritesContext } from "../store/context/favourites-context";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
 
 function FavouritesScreen() {
-  const favouritesMealCtx = useContext(FavouritesContext);
+  // const favouritesMealCtx = useContext(FavouritesContext);
+  const favouriteMealIds = useSelector((state) => state.favouritesMeals.ids);
 
   const favouriteMeals = MEALS.filter((meal) =>
-    favouritesMealCtx.ids.includes(meal.id)
+    // favouritesMealCtx.ids.includes(meal.id)
+    favouriteMealIds.includes(meal.id)
   );
 
   if (favouriteMeals.length === 0) {
